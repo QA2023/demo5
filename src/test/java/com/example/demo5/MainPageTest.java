@@ -36,13 +36,14 @@ public class MainPageTest {
 
     @Test
     public void changeLogTest() {
-        WebElement userIcon = driver.findElement(By.cssSelector("svg[data-test-id='menu-toggle-guest']"));
-        userIcon.click();
+
 
         WebElement rulesLink = driver.findElement(By.xpath("//*[contains(text(), 'Как стать автором')]"));
         rulesLink.click();
 
         WebElement authorsLink = driver.findElement(By.xpath("//*[contains(text(), 'Авторы')]"));
         authorsLink.click();
+
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(), 'Статистика')]")).isDisplayed(),"Статистика не найдена");
     }
 }
