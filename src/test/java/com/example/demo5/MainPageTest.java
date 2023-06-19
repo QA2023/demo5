@@ -25,8 +25,6 @@ public class MainPageTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.habr.com/");
-
-
     }
 
     @AfterEach
@@ -37,13 +35,24 @@ public class MainPageTest {
     @Test
     public void changeLogTest() {
 
-
         WebElement rulesLink = driver.findElement(By.xpath("//*[contains(text(), 'Как стать автором')]"));
         rulesLink.click();
-
         WebElement authorsLink = driver.findElement(By.xpath("//*[contains(text(), 'Авторы')]"));
         authorsLink.click();
 
         assertTrue(driver.findElement(By.xpath("//*[contains(text(), 'Статистика')]")).isDisplayed(),"Статистика не найдена");
     }
+
+    @Test
+    public void changeTest() {
+
+        WebElement news = driver.findElement(By.xpath("//*[contains(text(), 'Новости')]"));
+        news.click();
+
+        WebElement blog = driver.findElement(By.xpath("//*[contains(text(), 'Лучшие блоги')]"));
+        blog.click();
+
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(), 'Истории')]")).isDisplayed(),"Истории не найдены");
+    }
 }
+
